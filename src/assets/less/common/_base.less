@@ -458,6 +458,12 @@
 	padding-right: 50px;
 }
 /* border-radius */
+.g-br-10p {
+	border-radius: 10%;
+}
+.g-br-10 {
+	border-radius: 10px;
+}
 .g-br-100 {
 	border-radius: 100px;
 }
@@ -728,14 +734,11 @@
 // 在浏览器中起作用，在手机上不起作用，大概率是display: box兼容性
 .g-oneline {
 	overflow: hidden;
-    text-overflow: ellipsis;
-    display: box;
-	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	-webkit-box-orient: vertical;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	word-break: break-all;
 }
-/* 两行文字 */
+// /* 两行文字 */
 .g-twoline {
 	overflow: hidden;
 	text-overflow: ellipsis;

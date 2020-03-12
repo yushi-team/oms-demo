@@ -1,6 +1,9 @@
 const path = require('path')
-
+const subdirectoryPath = require('./config/subdirectory-path')
+const publicpath = require('./config/public-path')
 module.exports = {
+    publicPath: process.env.NODE_ENV === 'production' ? publicpath : '/',
+    assetsDir: subdirectoryPath,
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
     // webpack配置

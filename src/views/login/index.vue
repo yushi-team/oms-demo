@@ -96,11 +96,12 @@ export default {
 <style lang="less" scoped>
 .login {
     height: 100vh;
-    background: url(../../assets/img/bg.jpg) no-repeat center center;
+    background: url(../../assets/img/bg.jpeg) no-repeat center center;
     background-size: cover;
     .container {
         width: 400px;
         height: 300px;
+        margin-top: 15%;
         background: rgba(255, 255, 255, 0.5);
     }
 }

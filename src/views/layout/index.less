@@ -1,0 +1,145 @@
+.layoutPage {
+    height: 100%;
+    .layoutHeader {
+        line-height: 48px;
+        color: #fff;
+        background-color: #37363B;
+        .titleName {
+            font-size: 24px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .titleImg {
+            width: 30px;
+            margin-right: 10px;
+            position: relative;
+            top: 6px;
+        }
+        .userName {
+            font-size: 16px;
+            position: absolute;
+            right: 55px;
+        }
+        .signoutImg {
+            position: absolute;
+            right: 30px;
+            top: 16px;
+            cursor: pointer;
+        }
+        .message-box{
+            .message{
+                z-index: 999999999999 !important;
+                position: fixed;
+                top: 15px;
+                right: 180px;
+                width: 32px;
+                height: 24px;
+            }
+            .message-open{
+                z-index: 999999999999 !important;
+                position: fixed;
+                top: 7px;
+                right: 180px;
+                width: 32px;
+                height: 32px;
+            }
+            .message-info{
+                position: fixed;
+                top: 50px;
+                right: 180px;
+                z-index: 999999999999;
+                width: 300px;
+                height: 400px;
+                padding: 20px;
+                border: #aaa 1px solid;
+                background-color: #fff;
+                color: black;
+                overflow: scroll;
+                .content-info{
+                    margin-top: 10px;
+                }
+                .message-content{
+                    display: flex;
+                    flex-direction: column;
+                    .message-title{
+                        width: 280px;
+                        line-height: 16px !important;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                    .message-brief{
+                        overflow:hidden;
+                        line-height: 16px !important;
+                        text-overflow:ellipsis;
+                        display:-webkit-box;
+                        -webkit-box-orient:vertical;
+                        -webkit-line-clamp:2;
+                    }
+                }
+                .isRead{
+                    /deep/.el-collapse-item__header{
+                        color: #aaa;
+                    }
+                    /deep/.el-collapse-item__content {
+                        color: #aaa;
+                    }
+                }
+            }
+            .message-close{
+                float: right;
+            }
+        }
+    }
+    .layoutAside {
+        background-color: #37363B;
+        .hideMenuDiv {
+            font-size: 16px;
+            color: white;
+            height: 56px;
+            line-height: 56px;
+            padding-left: 20px;
+            user-select: none;
+            cursor: pointer;
+            &:hover {
+                background-color: #2C2B2F;
+            }
+            >i::before {
+                margin-left: 3px;
+                margin-right: 5px;
+            }
+            .gc-nav-expend-btn {
+                width: 54px;
+                height: 48px;
+                display: block;
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAACZJREFUKBVj+P///1YgJhVsZWIgD/wnT9sQ0wUMztFQpXqc0T1UAa53qKDWoY2NAAAAAElFTkSuQmCC) no-repeat center;
+                border: 1px solid transparent;
+                position: absolute;
+                left: 5px;
+            }
+        }
+        .elMenu {
+            border: none;
+            &:not(.el-menu--collapse) {
+                width: 200px;
+            }
+            .active {
+                color: #ff9234;
+            }
+        }
+    }
+    .layoutMain {
+        padding: 0 22px;
+        background: #fff;
+        .layoutBreadcrumb {
+            height: 48px;
+            line-height: 48px;
+            border-bottom: 1px dashed #dcdcdc;
+            margin-bottom: 20px;
+            .layoutBreadcrumbLast {
+                color: rgb(255, 146, 52);
+            }
+        }
+    }
+}
+

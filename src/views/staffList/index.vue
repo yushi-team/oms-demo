@@ -1,5 +1,6 @@
 <template>
     <div class="login g-relative">
+        员工列表
         <el-form
             ref="loginForm"
             :model="loginForm"
@@ -56,7 +57,7 @@
 <script>
 // import { commonModule, COMMON_USERINFO } from '@/store/modules/common'
 export default {
-    name: 'login',
+    name: 'staffList',
     data () {
         return {
             loginForm: {
@@ -97,14 +98,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login {
-    height: 100vh;
-    background: url(../../assets/img/bg.jpg) no-repeat center center;
-    background-size: cover;
-    .container {
-        width: 500px;
-        height: 300px;
-        background: rgba(255, 255, 255, 0.2);
-    }
-}
 </style>

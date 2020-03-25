@@ -1,13 +1,15 @@
 <template>
     <div class="login g-relative">
+        员工列表
         <el-form
             ref="loginForm"
             :model="loginForm"
             :rules="loginRules"
-            class="container clearfix g-absolute-center g-br-10 g-pd-30"
+            class="container clearfix g-absolute-center g-br-10 g-pd-20"
             autocomplete="on"
-            label-position="left">
-            <h1 class="g-c-fff">{{ $common.brandName }}后台管理系统</h1>
+            label-position="left"
+        >
+            <h1 class="g-c-fff">{{$common.brandName}}后台管理系统</h1>
             <el-form-item prop="username">
                 <el-input
                     ref="username"
@@ -31,11 +33,13 @@
                     tabindex="2"
                     autocomplete="on"
                     prefix-icon="el-icon-lock"
-                    @keyup.enter.native="handleLogin">
+                    @keyup.enter.native="handleLogin"
+                >
                     <span
                         slot="suffix"
                         class="g-m-r-10 g-pointer"
-                        @click="passwordType = !passwordType">
+                        @click="passwordType = !passwordType"
+                    >
                         <svg-icon :iconName="passwordType ? 'open-eye' : 'close-eye'" />
                     </span>
                 </el-input>
@@ -43,16 +47,17 @@
             <el-button
                 :loading="loading"
                 type="primary"
-                class="g-width"
+                class="g-width g-m-t-30"
                 @click.native.prevent="handleLogin"
-            >{{loading? '登陆中' : '登陆'}}</el-button>
+            >登陆</el-button>
         </el-form>
     </div>
 </template>
 
 <script>
+// import { commonModule, COMMON_USERINFO } from '@/store/modules/common'
 export default {
-    name: 'login',
+    name: 'staffList',
     data () {
         return {
             loginForm: {
@@ -69,9 +74,9 @@ export default {
     },
     methods: {
         handleLogin () {
+            this.loading = true
             this.$refs.loginForm.validate(valid => {
                 if (valid) {
-                    this.loading = true
                     this.$apis.login({
                         username: this.loginForm.username,
                         password: this.loginForm.password
@@ -79,10 +84,11 @@ export default {
                         this.loading = false
                         if (res.code === '2000') {
                             this.$router.replace('/welcome')
+                            // this.$store.dispatch(`${commonModule.name}/${COMMON_USERINFO}`, res.data)
                         }
                     }).catch(error => {
                         this.loading = false
-                        console.log(error.message)
+                        this.$message.error(error.message)
                     })
                 }
             })
@@ -92,15 +98,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login {
-    height: 100vh;
-    background: url(../../assets/images/bg.jpeg) no-repeat center center;
-    background-size: cover;
-    .container {
-        width: 400px;
-        height: 300px;
-        margin-top: 15%;
-        background: rgba(255, 255, 255, 0.5);
-    }
-}
 </style>

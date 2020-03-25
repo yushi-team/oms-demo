@@ -13,12 +13,12 @@ module.exports = {
         // 目标给svg规则增加一个排除选项exclude:['path/to/icon']
         config.module.rule('svg')
             .exclude
-            .add(path.join(__dirname, './src/assets/svg'))
+            .add(path.join(__dirname, './src/assets/svgs'))
         // 新增icons规则，设置svg-sprite-loader处理icons目录中的svg
         config.module.rule('icons')
             .test(/\.svg$/)
             .include
-            .add(path.join(__dirname, './src/assets/svg'))
+            .add(path.join(__dirname, './src/assets/svgs'))
             .end()
             .use('svg-sprite-loader')
             .loader('svg-sprite-loader')

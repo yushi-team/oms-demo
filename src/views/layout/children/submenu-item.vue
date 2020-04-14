@@ -9,7 +9,7 @@
                 v-for="childItem in item.subNav"
                 :key="childItem.actionId"
                 :index="childItem.link"
-                style="padding-left: 45px">
+                style="padding-left: 45px;">
                 {{childItem.name}}
             </el-menu-item>
         </el-submenu>

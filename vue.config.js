@@ -28,6 +28,11 @@ module.exports = {
         'style-resources-loader': {
             preProcessor: 'less',
             patterns: [path.resolve(__dirname, 'src/assets/less/common/_theme.less')]
+        },
+        lintStyleOnBuild: true,
+        stylelint: {
+            fix: true // boolean (default: true)
+            // files: ['src/**/*.vue', 'src/assets/less/*.l?(e|c)ss'] // string | [string] (default: ['src/**/*.{vue,htm,html,css,sss,less,scss}'])
         }
     }
 }

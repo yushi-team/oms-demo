@@ -96,11 +96,12 @@ export default {
     height: 100vh;
     background: url(../../assets/images/bg.jpeg) no-repeat center center;
     background-size: cover;
+
     .container {
         width: 400px;
         height: 300px;
         margin-top: 15%;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, .5);
     }
 }
 </style>

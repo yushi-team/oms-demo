@@ -49,9 +49,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-// @import "./index.less";
 .elMenu {
     width: 200px;
-    color: rgba(12, 12, 12, 0.2);
+    color: rgba(12, 12, 12, .2);
 }
 </style>

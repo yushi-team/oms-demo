@@ -7,6 +7,3 @@ export default {
     name: 'companyList'
 }
 </script>
-
-<style lang="less" scoped>
-</style>

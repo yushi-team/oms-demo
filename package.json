@@ -54,6 +54,9 @@
       "vue-cli-service lint",
       "git add"
     ],
-    "*.{vue,css,less}": "stylelint --cache --fix"
+    "*.{vue,css,less}": [
+      "stylelint --cache",
+      "git add"
+    ]
   }
 }

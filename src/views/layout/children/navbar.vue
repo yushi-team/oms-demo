@@ -1,7 +1,7 @@
 <template>
     <div class="g-width">
         <el-header class="header g-flex g-jc-sb g-ai-c">
-            <el-breadcrumb separator-class="el-icon-arrow-right" class="layoutBreadcrumb">
+            <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/welcome' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item :to="{path: getRoute($route.name)}" v-if="$route.meta && $route.meta.preTitle">{{ $route.meta.preTitle }}</el-breadcrumb-item>
                 <el-breadcrumb-item v-if="$route.meta && $route.meta.title">{{ $route.meta.title }}</el-breadcrumb-item>
@@ -11,8 +11,8 @@
                 <svg-icon @click="handleSignOut" iconName="logout" />
             </div>
         </el-header>
-        <el-main class="layoutHeader" height="48px">
-            <label class="titleName">{{$brandInfo.brandName}}管理后台</label>
+        <el-main height="48px">
+            <label class="g-fs-24 g-m-l-5">{{$brandInfo.brandName}}管理后台</label>
             <router-view />
         </el-main>
     </div>

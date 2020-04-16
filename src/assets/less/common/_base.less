@@ -938,30 +938,6 @@
 .g-relative {
     position: relative;
 }
-// 小部件
-
-/* 一行文字 */
-// 在浏览器中起作用，在手机上不起作用，大概率是display: box兼容性
-.g-oneline {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    word-break: break-all;
-}
-// /* 两行文字 */
-.g-twoline {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    word-break: break-all;
-}
-
-.g-break {
-    word-wrap: break-word;
-    word-break: break-all;
-}
 
 /* z-index */
 .g-zi-10 {
@@ -970,18 +946,4 @@
 
 .g-zi-100 {
     z-index: 100;
-}
-// 清除浮动
-.clearfix::before,
-.clearfix::after {
-    display: table;
-    content: "";
-}
-
-.clearfix::after {
-    clear: both;
-}
-// 鼠标变小手
-.g-pointer {
-    cursor: pointer;
 }

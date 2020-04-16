@@ -11,3 +11,46 @@
     bottom: 0;
     margin: auto;
 }
+
+/* 一行文字 */
+.g-oneline {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+/*
+ * 两行文字
+ * 注意：在pc浏览器中起作用，在手机上有时不起作用，大概率是display: box兼容性
+ */
+.g-twoline {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+
+// 换行
+.g-break {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+// 清除浮动
+.g-clear::before,
+.g-clear::after {
+    display: table;
+    content: "";
+}
+
+.g-clear::after {
+    clear: both;
+}
+
+// 鼠标变小手
+.g-pointer {
+    cursor: pointer;
+}

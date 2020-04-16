@@ -5,7 +5,7 @@
             ref="loginForm"
             :model="loginForm"
             :rules="loginRules"
-            class="container clearfix g-absolute-center g-br-10 g-pd-20"
+            class="container g-clear g-absolute-center g-br-10 g-pd-20"
             autocomplete="on"
             label-position="left"
         >

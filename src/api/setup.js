@@ -3,6 +3,25 @@ import hostConfig from './config'
 import { Message } from 'element-ui'
 
 const baseUrl = hostConfig.apiHost
+
+const pending = [] // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
+const cancelToken = axios.CancelToken
+const removePending = (config) => {
+    for (const p in pending) {
+        if (pending[p].u === config.url + '&' + config.method) { // 当当前请求在数组中存在时执行函数体
+            pending[p].f() // 执行取消操作
+            pending.splice(p, 1) // 把这条记录从数组中移除
+        }
+    }
+}
+
+const cutReq = (config) => {
+    for (const p in pending) {
+        if (pending[p].u === config.url + '&' + config.method) { // 当当前请求在数组中存在时执行函数体
+            return true
+        }
+    }
+}
 const apiConfig = axios.create({
     // 设置超时时间
     timeout: 10000,
@@ -35,6 +54,12 @@ const apiConfig = axios.create({
 
 // 请求拦截
 apiConfig.interceptors.request.use(config => {
+    const flag = cutReq(config)
+    if (flag === true) return null // 当上一次相同请求未完成时，无法进行第二次相同请求
+    config.cancelToken = new cancelToken((c) => {
+    // 这里的ajax标识我是用请求地址&请求方式拼接的字符串，当然你可以选择其他的一些方式
+        pending.push({ u: config.url + '&' + config.method, f: c })
+    })
     if (!config.data) {
         config.data = {}
     }
@@ -45,6 +70,7 @@ apiConfig.interceptors.request.use(config => {
 
 // 响应拦截
 apiConfig.interceptors.response.use(res => {
+    removePending(res.config)
     if (!res) {
         return Promise.reject(res)
     }

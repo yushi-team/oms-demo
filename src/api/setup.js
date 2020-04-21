@@ -2,31 +2,14 @@ import axios from 'axios'
 import hostConfig from './config'
 import { Message } from 'element-ui'
 
-const baseUrl = hostConfig.apiHost
-
-const pending = [] // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
+let pending = [] // 声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 const cancelToken = axios.CancelToken
-const removePending = (config) => {
-    for (const p in pending) {
-        if (pending[p].u === config.url + '&' + config.method) { // 当当前请求在数组中存在时执行函数体
-            pending[p].f() // 执行取消操作
-            pending.splice(p, 1) // 把这条记录从数组中移除
-        }
-    }
-}
 
-const cutReq = (config) => {
-    for (const p in pending) {
-        if (pending[p].u === config.url + '&' + config.method) { // 当当前请求在数组中存在时执行函数体
-            return true
-        }
-    }
-}
 const apiConfig = axios.create({
     // 设置超时时间
     timeout: 10000,
     // 请求的baseUrl
-    baseURL: baseUrl,
+    baseURL: hostConfig.apiHost,
     // 请求头部信息
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -54,15 +37,7 @@ const apiConfig = axios.create({
 
 // 请求拦截
 apiConfig.interceptors.request.use(config => {
-    const flag = cutReq(config)
-    if (flag === true) return null // 当上一次相同请求未完成时，无法进行第二次相同请求
-    config.cancelToken = new cancelToken((c) => {
-    // 这里的ajax标识我是用请求地址&请求方式拼接的字符串，当然你可以选择其他的一些方式
-        pending.push({ u: config.url + '&' + config.method, f: c })
-    })
-    if (!config.data) {
-        config.data = {}
-    }
+    if (hasSameReq(config)) return null
     return config
 }, err => {
     return Promise.reject(err)
@@ -85,9 +60,39 @@ apiConfig.interceptors.response.use(res => {
     }
     return res.data
 }, err => {
-    Message.error('服务器异常，请稍后重试')
     return Promise.reject(err)
 })
+
+/**
+ * 移除已相应的请求
+ * @param {*} config
+ */
+const removePending = (config) => {
+    pending = pending.filter(val => {
+        if (val.u === config.url + '&' + config.method) {
+            val.f()
+            return false
+        } else {
+            return true
+        }
+    })
+}
+
+/**
+ * 判断是否有相同请求
+ * 有，则无法发送该请求，没有则添加该请求到 pending list
+ * @param {*} config
+ */
+const hasSameReq = (config) => {
+    if (pending.some(val => val.u === config.url + '&' + config.method)) {
+        return true
+    } else {
+        new cancelToken((c) => {
+            pending.push({ u: config.url + '&' + config.method, f: c })
+        })
+        return false
+    }
+}
 
 export function createAPI (url, method, data) {
     const config = {

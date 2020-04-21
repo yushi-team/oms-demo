@@ -2,7 +2,8 @@
     <svg
         class="svg-icon"
         :class="classes"
-        aria-hidden="true">
+        aria-hidden="true"
+        @click="_click">
         <use :xlink:href="`#icon-${iconName}`" />
     </svg>
 </template>
@@ -18,6 +19,11 @@ export default {
         classes: {
             type: String,
             required: false
+        }
+    },
+    methods: {
+        _click () {
+            this.$emit('click')
         }
     }
 }

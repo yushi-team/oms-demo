@@ -4,7 +4,7 @@
 import { createAPI } from '../setup'
 import hostConfig from '../config'
 const LOGIN = {
-    // 获取我的首页所有数据
-    login: (data) => createAPI(`${hostConfig.apiHost}/login`, 'post', data)
+    login: (data) => createAPI(`${hostConfig.apiHost}/login`, 'post', data),
+    logout: (data) => createAPI(`${hostConfig.apiHost}/logout`, 'post', data)
 }
 export default LOGIN

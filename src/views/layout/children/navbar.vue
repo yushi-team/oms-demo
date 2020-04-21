@@ -3,8 +3,13 @@
         <el-header class="header g-flex g-jc-sb g-ai-c">
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/welcome' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item :to="{path: getRoute($route.name)}" v-if="$route.meta && $route.meta.preTitle">{{ $route.meta.preTitle }}</el-breadcrumb-item>
-                <el-breadcrumb-item v-if="$route.meta && $route.meta.title">{{ $route.meta.title }}</el-breadcrumb-item>
+                <el-breadcrumb-item
+                    :to="{path: getRoute($route.name)}"
+                    v-if="$route.meta && $route.meta.preTitle"
+                >{{ $route.meta.preTitle }}</el-breadcrumb-item>
+                <el-breadcrumb-item
+                    v-if="$route.meta && $route.meta.title"
+                >{{ $route.meta.title }}</el-breadcrumb-item>
             </el-breadcrumb>
             <div>
                 <label class="g-m-r-5">{{userInfo.userName}}</label>

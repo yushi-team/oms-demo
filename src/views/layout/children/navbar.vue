@@ -17,7 +17,7 @@
             </div>
         </el-header>
         <el-main height="48px">
-            <label class="g-fs-24 g-m-l-5">{{$brandInfo.brandName}}管理后台</label>
+            <label class="g-fs-24 g-m-l-5">{{$comm.brandName}}管理后台</label>
             <router-view />
         </el-main>
     </div>

@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import common from './common'
+import comm from './comm'
 // vue原型挂载 - 公共数据
-Vue.prototype.$common = common
+Vue.prototype.$comm = comm

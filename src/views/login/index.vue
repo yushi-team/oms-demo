@@ -7,7 +7,7 @@
             class="container g-clear g-absolute-center g-br-10 g-pd-30"
             autocomplete="on"
             label-position="left">
-            <h1 class="g-c-fff">{{ $common.brandName }}后台管理系统</h1>
+            <h1 class="g-c-fff">{{ $comm.brandName }}后台管理系统</h1>
             <el-form-item prop="username">
                 <el-input
                     ref="username"

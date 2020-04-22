@@ -13,12 +13,6 @@ Vue.config.productionTip = false
 Vue.use(Element)
 Vue.prototype.$apis = apis
 
-// vue原型挂载 - 初始化平台信息
-Vue.prototype.$brandInfo = {
-    brandId: 1,
-    brandName: '宇石'
-}
-
 new Vue({
     router,
     store,

@@ -1,2 +1,2 @@
-const publicPath = process.env.Public_Path
+const publicPath = process.env.VUE_APP_PUBLIC_PATH
 module.exports = publicPath

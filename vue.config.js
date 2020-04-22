@@ -1,11 +1,14 @@
 const path = require('path')
 const subdirectoryPath = require('./config/subdirectory-path')
 const publicpath = require('./config/public-path')
+const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
+
 module.exports = {
     publicPath: publicpath,
     assetsDir: subdirectoryPath,
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
+    productionSourceMap: !IS_PROD,
     // webpack配置
     // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
     chainWebpack: (config) => {

@@ -20,8 +20,7 @@ const apiConfig = axios.create({
     transformRequest: [function (data) {
         let ret = ''
         for (const it in data) {
-            // 去除空字符串的请求字段
-            if (data[it] !== '' && data[it] !== undefined && data[it] !== null) {
+            if (data[it] !== undefined && data[it] !== null) {
                 if (ret !== '') ret += '&'
                 // 处理复杂数据{list: [{a:1}, {b:2}]}
                 if (data[it] instanceof Array && data[it][0].constructor === Object) {
@@ -94,11 +93,18 @@ const hasSameReq = (config) => {
     }
 }
 
-export function createAPI (url, method, data) {
-    const config = {
-        method: method,
-        url: url,
-        data
+export const createAPI = (url, method, data) => {
+    if (method === 'post' || method === 'POST') {
+        return apiConfig({
+            method: method,
+            url: url,
+            data
+        })
+    } else {
+        return apiConfig({
+            method: method,
+            url: url,
+            params: data
+        })
     }
-    return apiConfig(config)
 }

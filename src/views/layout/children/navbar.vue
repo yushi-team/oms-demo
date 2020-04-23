@@ -1,5 +1,5 @@
 <template>
-    <div class="g-width">
+    <div class="g-w">
         <el-header class="header g-flex g-jc-sb g-ai-c">
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/welcome' }">首页</el-breadcrumb-item>

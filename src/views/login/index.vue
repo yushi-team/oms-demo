@@ -43,7 +43,7 @@
             <el-button
                 :loading="loading"
                 type="primary"
-                class="g-width"
+                class="g-w"
                 @click.native.prevent="handleLogin"
             >{{loading? '登陆中' : '登陆'}}</el-button>
         </el-form>

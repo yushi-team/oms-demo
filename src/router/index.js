@@ -61,7 +61,13 @@ const routes = [
                     title: '同步管理',
                     keepAlive: true
                 }
-            }]
+            }
+        ]
+    },
+    {
+        path: '*',
+        name: '404',
+        component: resolve => require(['@/views/404/index.vue'], resolve)
     }
 ]
 

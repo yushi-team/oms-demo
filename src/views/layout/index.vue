@@ -4,7 +4,7 @@
             :unique-opened="true"
             :router="true"
             :collapse="isCollapse"
-            class="elMenu g-tl g-height g-fs-20"
+            class="elMenu g-tl g-vh g-fs-20"
             text-color="#fff"
             background-color="#304156"
             active-text-color="#ff9234"

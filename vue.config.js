@@ -9,6 +9,15 @@ module.exports = {
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
     productionSourceMap: !IS_PROD,
+    // webpack-dev-server 相关配置
+    devServer: {
+        open: true,
+        overlay: {
+            warnings: true,
+            errors: true
+        }, // 当出现编译器错误或警告时，在浏览器中显示全屏覆盖层
+        before: app => { }
+    },
     // webpack配置
     // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
     chainWebpack: (config) => {

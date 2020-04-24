@@ -48,7 +48,7 @@
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-template-compiler": "^2.6.11"
   },
-  "hooks": {
+  "gitHooks": {
     "pre-commit": "lint-staged",
     "commit-msg": "commitlint -E GIT_PARAMS"
   },

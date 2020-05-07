@@ -9,12 +9,6 @@ module.exports = {
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
     productionSourceMap: !IS_PROD,
-    configureWebpack: {
-        output: {
-            filename: 'oms-demo/js/[name].[hash].b3.js',
-            chunkFilename: 'oms-demo/js/[name].[hash].c3.js'
-        }
-    },
     // webpack-dev-server 相关配置
     devServer: {
         open: true,

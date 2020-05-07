@@ -11,8 +11,8 @@ module.exports = {
     productionSourceMap: !IS_PROD,
     configureWebpack: {
         output: {
-            filename: 'oms-demo/js/[name].[hash].bundle1.js',
-            chunkFilename: 'oms-demo/js/[name].[hash].chunk1.js'
+            filename: 'oms-demo/js/[name].[hash].b3.js',
+            chunkFilename: 'oms-demo/js/[name].[hash].c3.js'
         }
     },
     // webpack-dev-server 相关配置

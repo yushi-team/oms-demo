@@ -59,6 +59,8 @@ apiConfig.interceptors.response.use(res => {
     }
     return res.data
 }, err => {
+    removePending(err.config)
+    Message.error(err.response ? `服务器异常（${err.response.status}）` : '连接超时，请检查网络')
     return Promise.reject(err)
 })
 

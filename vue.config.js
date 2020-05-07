@@ -9,6 +9,12 @@ module.exports = {
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
     productionSourceMap: !IS_PROD,
+    configureWebpack: {
+        output: {
+            filename: '[name].[hash].bundle.js',
+            chunkFilename: '[name].[hash].chunk.js'
+        }
+    },
     // webpack-dev-server 相关配置
     devServer: {
         open: true,

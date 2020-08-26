@@ -1,29 +1,81 @@
 # oms-demo
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
+> 后台管理系统模版
+## 功能简述
+1. 主界面包含: 侧边栏、登陆、退出登陆、404页面。
+2. 功能包含: vue-cli 4.x、axios、elementUI、vuex、[yapi取数据](http://yapi.youximao.cn/project/613/interface/api)、灰度发布、主题色配置、svg组件。
+## 安装预览
+```bash
+# 安装依赖
+yarn
+# 启动本地调试
+yarn serve | yarn start | yarn dev
+# 开发环境打包压缩
+yarn build:staging
+# 预发及生产环境打包压缩
+yarn build
+# eslint格式校验
+yarn lint
 ```
 
-### Lints and fixes files
+## 项目结构
 ```
-npm run lint
+.
+├── README.md  ------------------------ 说明文件
+├── package.json  ----------------------- 项目配置
+├── vue.config.js  ------------------------ webpack配置入口
+├── public  --------------------------------- 入口文件
+├──   ├── favicon.ico  ---------------- 网页图标
+├──   └── index.html  --------------- 入口页面
+├── config  --------------------------------- 入口文件
+├──   ├── public-path.js  ---------------- cdn路径配置
+├──   └── subdirectory-path  --------------- 打包出来目录名
+└── src  ------------------------------------- 源码目录
+    ├── api  --------------------------------- 网络请求与请求的所有接口（分模块）
+    ├──  ├── index.js  ----------------- 引入所有api
+    ├──  ├── config.js ----------------- 网络请求设置
+    ├──  ├── setup.js  ----------------- 封装的所有网络请求
+    ├──  └── modules/xx.js  ------- 按模块划分api
+    ├── assets  ----------------------------- 项目资源文件目录（图片、字体等）
+    ├──  ├── images  ------------------ 所有图片
+    ├──  ├── less  ----------------------- 所有样式
+    ├──  ├──  ├─ index.less  ------------------- 所有样式引入入口
+    ├──  ├──  ├─ common/_base ----------- 公共基础样式
+    ├──  ├──  ├─ common/_common ------ 通用公共样式
+    ├──  ├──  ├─ common/_components - 公共样式部件
+    ├──  ├──  ├─ common/_iconfont -------- 公共icon
+    ├──  ├──  ├─ common/_mixins ---------- 公共混入样式
+    ├──  ├──  ├─ common/_resetElement- 重置elementUI样式
+    ├──  ├──  └─ common/_theme ---------- 主题色配置
+    ├──  ├── svgs ---------------------- 所有svg图片
+    ├── components  ------------------- 业务模块集合目录（组件）
+    ├──  ├── index.js ----------------- 注册所有全局组件
+    ├── router  ---------------------------- 路由
+    ├── store  ------------------------------ vuex（分模块）
+    ├── utils  ------------------------------ 工具函数
+    ├──  ├── common  ------- 挂载在$common上的数据
+    ├──  ├── directive --------------- 所有指令
+    ├──  └── filter -------------------- 所有过滤器
+    ├── plugins  -------------------------- 引入的插件自动生成的配置
+    ├── views  ---------------------------- 页面集合目录
+    ├── ├── xx.vue  -------------------- 页面
+    ├── └── children -----------------拆分出的子页面
+    ├── App.less  ------------------------ 主样式
+    ├── App.vue  ------------------------ 主组件
+    └── main.js  ------------------------- 项目级入口配置文件
 ```
+## 常见问题说明
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+暂无
+
+## 更新记录
+
+2020.04.xx：脚手架升级到4.0，调整目录结构，增加了stylelint、commitlint等规范校验工具
+
+2020.04.xx：增加了请求防抖（相同的url和method时，短时间内多次请求会取消最新的请求）
+
+2020.05.xx：改为灰度发布部署
+
+2020.08.26：增加了请求防抖允许不同的请求参数的重复请求
+
+
+

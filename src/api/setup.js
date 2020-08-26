@@ -1,4 +1,3 @@
-/* eslint-disable */
 import axios from 'axios'
 import hostConfig from './config'
 import { Message } from 'element-ui'

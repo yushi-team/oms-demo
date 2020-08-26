@@ -36,7 +36,7 @@ const apiConfig = axios.create({
 
 // 请求拦截
 apiConfig.interceptors.request.use(config => {
-    if (hasSameReq(config)) return null
+    handleReq(config)
     return config
 }, err => {
     return Promise.reject(err)
@@ -59,8 +59,8 @@ apiConfig.interceptors.response.use(res => {
     }
     return res.data
 }, err => {
-    removePending(err.config)
-    Message.error(err.response ? `服务器异常（${err.response.status}）` : '连接超时，请检查网络')
+    err.config && removePending(err.config)
+    err.response && Message.error(err.response ? `服务器异常（${err.response.status}）` : '连接超时，请检查网络')
     return Promise.reject(err)
 })
 
@@ -70,7 +70,7 @@ apiConfig.interceptors.response.use(res => {
  */
 const removePending = (config) => {
     pending = pending.filter(val => {
-        if (val.u === config.url + '&' + config.method) {
+        if (val.u === concatReq(config)) {
             val.f()
             return false
         } else {
@@ -80,19 +80,22 @@ const removePending = (config) => {
 }
 
 /**
- * 判断是否有相同请求
- * 有，则无法发送该请求，没有则添加该请求到 pending list
+ * 对请求进行处理：过滤与收集
  * @param {*} config
  */
-const hasSameReq = (config) => {
-    if (pending.some(val => val.u === config.url + '&' + config.method)) {
-        return true
-    } else {
-        new cancelToken((c) => {
-            pending.push({ u: config.url + '&' + config.method, f: c })
+const handleReq = (config) => {
+    removePending(config)
+    config.cancelToken = new cancelToken((c) => {
+        pending.push({
+            u: concatReq(config),
+            f: c
         })
-        return false
-    }
+    })
+}
+
+const concatReq = (config) => {
+    const { url, method, data = '', params } = config
+    return url.concat(method, JSON.stringify(data), JSON.stringify(params))
 }
 
 export const createAPI = (url, method, data) => {
